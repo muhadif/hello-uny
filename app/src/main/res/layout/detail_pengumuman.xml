@@ -22,7 +22,7 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:scaleType="centerCrop"/>
@@ -38,7 +38,6 @@
                 android:paddingRight="5dp"
                 android:paddingTop="5dp"
                 android:textColor="@color/cardview_dark_background"
-                android:text="test"
                 android:textSize="16sp"
                 android:typeface="sans"
                 android:textStyle="normal"/>

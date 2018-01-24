@@ -3,6 +3,7 @@ package id.ac.uny.afandi.rahmad.hellouny;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,7 @@ class DetailListPengumumanAdapter extends RecyclerView.Adapter<DetailListPengumu
         JSONArray konten = list.get(position).getKonten();
         for (int i = 0; i < konten.length() ; i++) {
             try {
+                Log.d("url",konten.getString(i));
                 Picasso.with(context).load(konten.getString(i)).into(holder.imageView);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -50,7 +52,6 @@ class DetailListPengumumanAdapter extends RecyclerView.Adapter<DetailListPengumu
         JSONArray lampiran = list.get(position).getLampiran();
         JSONArray judul_lampiran = list.get(position).getJudul_lampiran();
         for (int i = 0; i < lampiran.length() ; i++) {
-
             try {
                 holder.textKonten.setText(judul_lampiran.getString(i));
             } catch (JSONException e) {

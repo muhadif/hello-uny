@@ -44,7 +44,6 @@ public class DetailBeritaFragment extends Fragment {
         list = new ArrayList<>();
         page=1;
         String url = getArguments().getString("url");
-        Log.d("url",url);
         loadMyContent(url);
         gridLayoutManager = new GridLayoutManager(getActivity(),1);
         recyclerView.setLayoutManager(gridLayoutManager);
