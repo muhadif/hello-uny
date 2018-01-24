@@ -1,31 +1,34 @@
 package id.ac.uny.afandi.rahmad.hellouny;
 
+import org.json.JSONArray;
+
+
 /**
  * Created by rmd on 1/18/2018.
  */
 
-class DetailListBerita {
+class DetailListPengumuman {
 
-    private String judul;
-    private String gambar;
-    private String konten;
+    private JSONArray konten;
+    private JSONArray lampiran;
+    private JSONArray judul_lampiran;
 
-    public DetailListBerita(String judul, String gambar, String konten) {
-        this.judul = judul;
-        this.gambar = gambar;
+    public DetailListPengumuman(JSONArray konten, JSONArray lampiran, JSONArray judul_lampiran) {
         this.konten = konten;
+        this.lampiran = lampiran;
+        this.judul_lampiran = judul_lampiran;
     }
 
-    public String getJudul() {
-        return judul;
-    }
-
-    public String getGambar() {
-        return gambar;
-    }
-
-    public String getKonten() {
+    public JSONArray getKonten() {
         return konten;
+    }
+
+    public JSONArray getLampiran() {
+        return lampiran;
+    }
+
+    public JSONArray getJudul_lampiran() {
+        return judul_lampiran;
     }
 }
 

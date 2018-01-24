@@ -65,7 +65,7 @@ public class DetailBeritaFragment extends Fragment {
                             .addFormDataPart("tipe","berita")
                             .build();
                     Request request = new Request.Builder()
-                            .url("http://api.ngeartstudio.com/api/detail")
+                            .url("http://api.ngeartstudio.com/api/new/detail")
                             .post(requestBody)
                             .build();
                     Response response = client.newCall(request).execute();

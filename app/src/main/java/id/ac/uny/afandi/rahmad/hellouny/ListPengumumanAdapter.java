@@ -46,11 +46,11 @@ class ListPengumumanAdapter extends RecyclerView.Adapter<ListPengumumanAdapter.V
             @Override
             public void onClick(View v) {
                 AppCompatActivity compatActivity = (AppCompatActivity) v.getContext();
-                DetailBeritaFragment detailBeritaFragment = new DetailBeritaFragment();
+                DetailPengumumanFragment detailPengumumanFragment = new DetailPengumumanFragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("url", list.get(position).getLink());
-                detailBeritaFragment.setArguments(bundle);
-                compatActivity.getFragmentManager().beginTransaction().replace(R.id.content_main,detailBeritaFragment).commit();
+                detailPengumumanFragment.setArguments(bundle);
+                compatActivity.getFragmentManager().beginTransaction().replace(R.id.content_main,detailPengumumanFragment).commit();
                 DrawerLayout drawer = compatActivity.findViewById(R.id.drawer_layout);
                 drawer.closeDrawer(GravityCompat.START);
             }

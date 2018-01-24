@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,22 +33,21 @@ public class DetailPengumumanFragment extends Fragment {
     private RecyclerView recyclerView;
     protected int page;
     private GridLayoutManager gridLayoutManager;
-    private List<DetailListBerita> list;
-    private DetailListBeritaAdapter adapter;
+    private List<DetailListPengumuman> list;
+    private DetailListPengumumanAdapter adapter;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.detail_fragment,container,false);
-        getActivity().setTitle("Detail Berita");
+        View view = inflater.inflate(R.layout.detail_pengumuman_fragment,container,false);
+        getActivity().setTitle("Detail Pengumuman");
         recyclerView =  view.findViewById(R.id.recycler_view);
         list = new ArrayList<>();
         page=1;
         String url = getArguments().getString("url");
-        Log.d("url",url);
         loadMyContent(url);
         gridLayoutManager = new GridLayoutManager(getActivity(),1);
         recyclerView.setLayoutManager(gridLayoutManager);
-        adapter = new DetailListBeritaAdapter(getActivity(),list);
+        adapter = new DetailListPengumumanAdapter(getActivity(),list);
         recyclerView.setAdapter(adapter);
         return view;
     }
@@ -61,16 +61,19 @@ public class DetailPengumumanFragment extends Fragment {
                     RequestBody requestBody = new MultipartBody.Builder()
                             .setType(MultipartBody.FORM)
                             .addFormDataPart("url",url)
-                            .addFormDataPart("tipe","berita")
+                            .addFormDataPart("tipe","pengumuman")
                             .build();
                     Request request = new Request.Builder()
-                            .url("http://api.ngeartstudio.com/api/detail")
+                            .url("http://api.ngeartstudio.com/api/new/detail")
                             .post(requestBody)
                             .build();
                     Response response = client.newCall(request).execute();
                     JSONObject obj = new JSONObject(response.body().string());
-                    DetailListBerita berita = new DetailListBerita(obj.getString("judul"),obj.getString("gambar"),obj.getString("konten"));
-                    list.add(berita);
+                    JSONArray array_konten = obj.getJSONArray("konten");
+                    JSONArray array_lampiran = obj.getJSONArray("lampiran");
+                    JSONArray array_judul_lampiran = obj.getJSONArray("judul_lampiran");
+                    DetailListPengumuman pengumuman = new DetailListPengumuman(array_konten,array_lampiran,array_judul_lampiran);
+                    list.add(pengumuman);
                 } catch (JSONException e) {
                     System.out.println(e.getMessage());
                 } catch (IOException e) {

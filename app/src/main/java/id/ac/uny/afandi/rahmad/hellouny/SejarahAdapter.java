@@ -35,14 +35,6 @@ class SejarahAdapter extends RecyclerView.Adapter<SejarahAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.textSejarah.setText(list.get(position).getSejarah());
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AppCompatActivity compatActivity = (AppCompatActivity) v.getContext();
-//                DetailBeritaFragment detailBeritaFragment = new DetailBeritaFragment();
-//                compatActivity.getFragmentManager().beginTransaction().replace(R.id.berita,detailBeritaFragment).commit();
-            }
-        });
     }
 
     @Override
